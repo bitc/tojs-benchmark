@@ -90,15 +90,15 @@ foreign import javascript unsafe
     js_requestAnimationFrame :: (Callback (IO ())) -> IO ()
 
 foreign import javascript unsafe
-    "Number(global_num_barriers)"
+    "$r = global_num_barriers"
     js_getNumBarriers :: IO Int
 
 foreign import javascript unsafe
-    "Number(global_num_particles)"
+    "$r = global_num_particles"
     js_getNumParticles :: IO Int
 
 foreign import javascript unsafe
-    "Number(global_num_frames)"
+    "$r = global_num_frames"
     js_getNumFrames :: IO Int
 
 #else
