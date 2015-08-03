@@ -19,6 +19,14 @@
     <script src="../_build/main.jsexe/out.js"></script>
 
     <script type="text/javascript">
+      function getVar(name, def) {
+        var arr = window.location.search.match(new RegExp(name + '=(\\d+)'));
+	if (!arr) return def;
+	return parseInt(arr[1], 10);
+      }
+      var global_num_barriers = getVar('barriers', 20);
+      var global_num_particles = getVar('particles', 1000);
+      var global_num_frames = getVar('frames', 200);
       h$runSync(h$mainZCMainzimain, false);
     </script>
   </body>

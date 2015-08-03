@@ -18,11 +18,14 @@ main = do
 
     ctx <- C.getContext canvas
 
-    let world = newWorld
+    numBarriers <- js_getNumBarriers
+    numParticles <- js_getNumParticles
+
+    let world = newWorld numBarriers numParticles
 
     startTime <- js_now
 
-    let numFrames = 200
+    numFrames <- js_getNumFrames
     animate startTime numFrames ctx world
 
 animate :: Double -> Int -> C.Context -> World -> IO ()
@@ -86,6 +89,17 @@ foreign import javascript unsafe
     "window.requestAnimationFrame($1)"
     js_requestAnimationFrame :: (Callback (IO ())) -> IO ()
 
+foreign import javascript unsafe
+    "Number(global_num_barriers)"
+    js_getNumBarriers :: IO Int
+
+foreign import javascript unsafe
+    "Number(global_num_particles)"
+    js_getNumParticles :: IO Int
+
+foreign import javascript unsafe
+    "Number(global_num_frames)"
+    js_getNumFrames :: IO Int
 
 #else
 
@@ -100,5 +114,14 @@ js_addCanvasToBody = error "js_addCanvasToBody: only available in JavaScript"
 
 js_requestAnimationFrame :: (Callback (IO ())) -> IO ()
 js_requestAnimationFrame = error "js_requestAnimationFrame: only available in JavaScript"
+
+js_getNumBarriers :: IO Int
+js_getNumBarriers = error "js_getNumBarriers: only available in JavaScript"
+
+js_getNumParticles :: IO Int
+js_getNumParticles = error "js_getNumParticles: only available in JavaScript"
+
+js_getNumFrames :: IO Int
+js_getNumFrames = error "js_getNumFrames: only available in JavaScript"
 
 #endif
