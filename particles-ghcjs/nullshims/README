@@ -1,0 +1,3 @@
+These are dummy modules to be used with regular GHC when working with GHCJS
+code, to allow the code to compile. This is useful for being able to run ghci
+or tools like ghc-mod.
