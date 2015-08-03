@@ -134,11 +134,9 @@ class World {
     private particles: Array<Particle>;
     private barriers: Array<Barrier>;
 
-    public constructor() {
+    public constructor(numBarriers:number, numParticles:number) {
         var w:number = 640000;
         var h:number = 480000;
-        var numBarriers:number = 20;
-        var numParticles:number = 1000;
 
         this.env = new Environment();
         this.env.width = w;
@@ -195,6 +193,10 @@ function randomBarrier(rg:PseudoRandom, w:number, h:number) {
     return new Barrier(r, x, y);
 }
 
+declare var global_num_barriers:number;
+declare var global_num_particles:number;
+declare var global_num_frames:number;
+
 function main() {
     var canvas = document.createElement('canvas');
     canvas.width = 640;
@@ -203,11 +205,11 @@ function main() {
 
     var ctx = canvas.getContext('2d');
 
-    var world: World = new World();
+    var world: World = new World(global_num_barriers, global_num_particles);
 
     var startTime = new Date().getTime();
 
-    var framesLeft:number = 200;
+    var framesLeft:number = global_num_frames;
 
     function animate() {
         renderWorld(ctx, world);
