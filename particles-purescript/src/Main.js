@@ -34,7 +34,7 @@ exports.js_now = function() {
 
 exports.js_alertNumber = function(num) {
   return function() {
-    alert('' + num);
+    alert('Measured milliseconds: ' + num);
   }
 }
 

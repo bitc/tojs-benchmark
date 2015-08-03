@@ -74,7 +74,7 @@ createCallback action = do
 #ifdef ghcjs_HOST_OS
 
 foreign import javascript unsafe
-    "alert('' + $1)"
+    "alert('Measured milliseconds: ' + $1)"
     js_alertDouble :: Double -> IO ()
 
 foreign import javascript unsafe

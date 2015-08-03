@@ -218,7 +218,7 @@ function main() {
         framesLeft--;
         if (framesLeft < 0) {
             var endTime:number = new Date().getTime();
-            alert('' + (endTime - startTime));
+            alert('Measured milliseconds: ' + (endTime - startTime));
         } else {
             window.requestAnimationFrame(animate);
         }
