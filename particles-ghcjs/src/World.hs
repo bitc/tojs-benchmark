@@ -8,7 +8,7 @@ import Particle
 import PseudoRandom
 
 data World = World
-    { env :: Environment
+    { env :: !Environment
     , particles :: [Particle]
     , barriers :: [Barrier]
     }

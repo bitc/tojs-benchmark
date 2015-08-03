@@ -5,12 +5,12 @@ import Data.List
 import Environment
 
 data Particle = Particle
-    { radius :: Int
-    , color :: Int
-    , posX :: Int
-    , posY :: Int
-    , oldX :: Int
-    , oldY :: Int
+    { radius :: !Int
+    , color :: !Int
+    , posX :: !Int
+    , posY :: !Int
+    , oldX :: !Int
+    , oldY :: !Int
     }
     deriving (Show)
 
