@@ -247,3 +247,6 @@ function renderWorld(ctx:CanvasRenderingContext2D, world:World) {
     world.getBarriers().forEach(renderBarrier);
     world.getParticles().forEach(renderParticle);
 }
+
+// Needed for Closure Compiler
+(<any>window)["main"] = main;
