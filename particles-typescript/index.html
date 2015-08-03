@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Particles Benchmark</title>
+  </head>
+  <style>
+    body {
+      background: black;
+    }
+    canvas {
+      border: 1px solid white;
+    }
+  </style>
+  <body>
+    <script src="main.js"></script>
+
+    <script type="text/javascript">
+      function getVar(name, def) {
+        var arr = window.location.search.match(new RegExp(name + '=(\\d+)'));
+	if (!arr) return def;
+	return parseInt(arr[1], 10);
+      }
+      var global_num_barriers = getVar('barriers', 20);
+      var global_num_particles = getVar('particles', 1000);
+      var global_num_frames = getVar('frames', 200);
+      main();
+    </script>
+  </body>
+</html>
