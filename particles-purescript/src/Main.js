@@ -43,3 +43,15 @@ exports.js_requestAnimationFrame = function(action) {
     window.requestAnimationFrame(action);
   };
 }
+
+exports.js_getNumBarriers = function() {
+  return global_num_barriers;
+}
+
+exports.js_getNumParticles = function() {
+  return global_num_particles;
+}
+
+exports.js_getNumFrames = function() {
+  return global_num_frames;
+}

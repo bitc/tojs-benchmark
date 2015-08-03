@@ -16,13 +16,11 @@ type World =
     , barriers :: Array Barrier
     }
 
-newWorld :: World
-newWorld =
+newWorld :: Int -> Int -> World
+newWorld numBarriers numParticles =
     let w = 640000
         h = 480000
         g = 80
-        numBarriers = 20
-        numParticles = 1000
 
         rg = newRandomState
         result = (flip runState) rg $ do

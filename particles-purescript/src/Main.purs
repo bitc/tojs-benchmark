@@ -17,11 +17,14 @@ main = do
 
     ctx <- C.getContext2D canvas
 
-    let world = newWorld
+    numBarriers <- js_getNumBarriers
+    numParticles <- js_getNumParticles
+
+    let world = newWorld numBarriers numParticles
 
     startTime <- js_now
 
-    let numFrames = 200
+    numFrames <- js_getNumFrames
     animate startTime numFrames ctx world
 
 animate :: forall eff. Number -> Int -> C.Context2D -> World -> Eff (canvas :: C.Canvas | eff) Unit
@@ -79,3 +82,7 @@ foreign import addCanvasToBody :: forall eff. C.CanvasElement -> Eff (canvas :: 
 foreign import js_now :: forall eff. Eff (canvas :: C.Canvas | eff) Number
 foreign import js_alertNumber :: forall eff. Number -> Eff (canvas :: C.Canvas | eff) Unit
 foreign import js_requestAnimationFrame :: forall eff. (Eff (canvas :: C.Canvas | eff) Unit) -> Eff (canvas :: C.Canvas | eff) Unit
+
+foreign import js_getNumBarriers :: forall eff. Eff (canvas :: C.Canvas | eff) Int
+foreign import js_getNumParticles :: forall eff. Eff (canvas :: C.Canvas | eff) Int
+foreign import js_getNumFrames :: forall eff. Eff (canvas :: C.Canvas | eff) Int
